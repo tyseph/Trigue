@@ -3,4 +3,4 @@ Trigue is a mobile app providing relevant and concise information for arbitrary 
 # How to run the project
 1. clone directory
 2. run 'yarn install'
-#Strictly avoid npm install due to peer dependencies
+# Strictly avoid npm install due to peer dependencies
