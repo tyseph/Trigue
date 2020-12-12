@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Text, View, FlatList, StyleSheet } from "react-native";
+import { Button, Text, View, FlatList, TouchableOpacity } from "react-native";
 
 import auth from "@react-native-firebase/auth";
 
@@ -39,7 +39,6 @@ export default class Home extends Component {
 						id: doc.id,
 						title,
 						description,
-						color
 					});
 					this.setState({
 						menu: list,
@@ -54,7 +53,6 @@ export default class Home extends Component {
 			.add({
 				title: "Sajal",
 				description: "I created this colour also",
-				color: "red"
 			})
 			.then(() => {
 				console.log("Updated successfully");
@@ -73,26 +71,23 @@ export default class Home extends Component {
 	render() {
 		const lapsList = this.state.menu.map((menu) => {
 			return (
-				<Card style={{ backgroundColor: "red", width: 370, height: 400, borderRadius: 25 }} key={menu.id}>
+				<Card style={{}} key={menu.id}>
 					<View>
 						<Text
-							
 							style={{
 								fontSize: 50,
 								textAlign: "center",
-								fontWeight: '700',
+								fontWeight: "700",
 							}}
 						>
-							{menu.title}{' '}
-							{menu.color}
+							{menu.title}
 						</Text>
 						<Text
-							
 							style={{
-								fontSize: 25,
-								marginTop: 20,
-								textAlign: "center",
-								fontWeight: '700',
+								fontSize: 30,
+								padding: 20,
+								textAlign: "left",
+								fontWeight: "700",
 							}}
 						>
 							{menu.description}
@@ -104,7 +99,7 @@ export default class Home extends Component {
 
 		return (
 			<View style={{ flex: 1 }}>
-				<Text style={{ fontSize: 25, fontWeight: "bold", textAlign: "center" }}>
+				<Text style={{ fontSize: 50, fontWeight: "700", textAlign: "center" }}>
 					{this.state.name}
 				</Text>
 				{/* <FlatList
@@ -119,21 +114,46 @@ export default class Home extends Component {
 				/> */}
 
 				<CardStack
+					secondCardZoom={0.1}
 					data={this.state.menu}
 					key={this.state.menu}
 					style={{
 						flex: 1,
 						justifyContent: "center",
-						alignSelf: "center",
 						alignItems: "center",
-						width: "100%",
+					}}
+					cardContainerStyle={{
+						width: "99.9%",
+						backgroundColor: "#3459cb",
+						height: "95%",
+						borderRadius: 25,
 					}}
 					loop={true}
 				>
 					{lapsList}
 				</CardStack>
-				<Button title="Logout" onPress={this.onLogout} />
-				<Button title="print" onPress={this.print} />
+				<TouchableOpacity
+					onPress={this.onLogout}
+					style={{
+						width: "105%",
+						alignSelf: "center",
+						backgroundColor: "#ff0000",
+						borderRadius: 25,
+					}}
+				>
+					<Text
+						style={{
+							fontSize: 30,
+							padding: 5,
+							textAlign: "center",
+							fontWeight: "700",
+							color: "white",
+						}}
+					>
+						Logout
+					</Text>
+				</TouchableOpacity>
+				{/* <Button title="print" onPress={this.print} /> */}
 			</View>
 		);
 	}
