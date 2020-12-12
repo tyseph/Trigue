@@ -114,7 +114,7 @@ export default class Home extends Component {
 				/> */}
 
 				<CardStack
-					secondCardZoom={0.1}
+					secondCardZoom={0.01}
 					data={this.state.menu}
 					key={this.state.menu}
 					style={{
