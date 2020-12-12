@@ -3,6 +3,8 @@ import { Button, Text, View, TextInput } from "react-native";
 
 import auth from "@react-native-firebase/auth";
 
+
+
 export default class Login extends Component {
 	constructor() {
 		super();
@@ -32,11 +34,11 @@ export default class Login extends Component {
         };
         
         async componentDidMount() {
-                await auth().onAuthStateChanged(async (user) => {
-                        if (user) {
-                          this.props.navigation.navigate('Home');
-                        }
-                });
+                auth().onAuthStateChanged(async (user) => {
+			if (user) {
+				this.props.navigation.navigate('Home');
+			}
+		});
         }
                   
 	render() {
